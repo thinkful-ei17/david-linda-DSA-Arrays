@@ -1,4 +1,39 @@
 function maxSum(array) {
+
+  if(!array.length){
+    return 0
+  }
+  
+  for (i = 0; i < array.length; i++) {
+    let currentSum = 0;
+    let totalSum = Math.max(...array);
+    console.log('what is totalSum at start', totalSum);
+    currentSum = currentSum + array[i];
+      if(currentSum > totalSum) {
+        console.log('say hi');
+        totalSum += currentSum;
+      }
+      console.log('what is currentSum', currentSum);
+      console.log('what is totalSum', totalSum);
+      return totalSum + maxSum(array.slice(1))
+  }
+}
+
+console.log(maxSum([-1, -3, 10, 10, -10]));
+
+/* idea
+
+Add all numbers in array = store in new array
+reduce by 1 index
+Add all numbers in array = store in new array
+reduce by 1 index
+....
+continue on until array empty;
+then compare numbers in array - Math.max?
+
+
+/* issues when a negative number is between two positives sort of
+function maxSum(array) {
   let currentSum = 0;
   let totalSum = Math.max(...array);
   for (i = 0; i < array.length; i++) {
@@ -11,7 +46,7 @@ function maxSum(array) {
   return totalSum;
 }
 
-console.log(maxSum([-1, -3, 10, 10, -10]));
+*/
 
 /* 
 Input: [4,6,-3,5,-2,1]
