@@ -122,5 +122,8 @@ main();
 //         ptr
 
 // |3|5|15|'tauhida'|'david'|10|
-//             0        1    
+//             3        1    
 //            ptr
+
+//ptr changes, start at 0; finish capacity (declared to begin with at constructor) so ptr = 0;
+//capacity reached (ex. 3) 0 1 2; now need to find bigger location; take entire array copy to new location which starts at 4 so ptr now is 4; resize then goes to new location and ptr changes again
