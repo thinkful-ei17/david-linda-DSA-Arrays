@@ -1,25 +1,24 @@
 function maxSum(array) {
+  let currentSum = 0;
+  let totalSum = Math.max(...array);
 
   if(!array.length){
-    return 0
+    return [];
   }
-  
-  for (i = 0; i < array.length; i++) {
-    let currentSum = 0;
-    let totalSum = Math.max(...array);
-    console.log('what is totalSum at start', totalSum);
+
+  for (let i = 0; i < array.length; i++) {
     currentSum = currentSum + array[i];
-      if(currentSum > totalSum) {
-        console.log('say hi');
-        totalSum += currentSum;
-      }
-      console.log('what is currentSum', currentSum);
-      console.log('what is totalSum', totalSum);
-      return totalSum + maxSum(array.slice(1))
+    if(currentSum > totalSum) {
+      totalSum = currentSum;
+    }
   }
+  return [totalSum, ... maxSum(array.slice(1))];
 }
 
-console.log(maxSum([-1, -3, 10, 10, -10]));
+function maxNum(array) {
+  return Math.max(...maxSum(array));
+}
+console.log(maxNum([-1, -3, 10, 10, -10, 30]));
 
 /* idea
 
