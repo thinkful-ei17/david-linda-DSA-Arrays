@@ -16,7 +16,7 @@ class Array {
   }
 
   _resize(size) { //resize allocated space
-    const oldPtr = this.prt;
+    const oldPtr = this.ptr;
     this.ptr = memory.allocate(size);
     if (this.ptr === null) {
       throw new Error('Out of memory');
@@ -82,8 +82,16 @@ function main() {
   arr.pop();
   arr.pop();
   arr.pop();
+  // console.log(arr);
+  // console.log(arr.get(0));
+  arr.pop();
+  arr.pop();
+  arr.pop();
+  arr.push(155);
+  arr.push('david');
   console.log(arr);
-  console.log(arr.get(-3));
+  console.log(arr.get(0));
+//   console.log(arr.get(4));
 }
 
 main();
@@ -102,3 +110,17 @@ main();
 //length: 3
 //capacity: 4 * 3 = 12
 //memory address: 3 
+
+//pop 3 more times to remove all
+//pushed 'tauhida'
+//length: 1
+//capacity: 12
+//memory address: 0 ; it was actually still 3 because we did not free up the ptr when we popped
+
+// |3|5|15|19|45|10|
+//  0 1 2  3      
+//         ptr
+
+// |3|5|15|'tauhida'|'david'|10|
+//             0        1    
+//            ptr
