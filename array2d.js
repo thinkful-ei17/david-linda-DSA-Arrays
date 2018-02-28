@@ -1,16 +1,23 @@
 function setZero(array){
-  console.log('what is length', array.length);
-  for (i = 0; i < array.length; i++) {
-    for (j = 0; j < array[i].length; j++){
-      console.log('i am inner loop');
+  let chosenOnes = [];
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array[i].length; j++){
       //if you find 0 value in an array, set all index numbers in same array to 0 value (inner loop)
-      if(array[i][j] != 0 ) {
-        array[i][j] = 0;
+      if(array[i][j] === 0 ) {
+        chosenOnes.push([i, j]);
       }
     }
-    console.log('outer loop ran');
   }
-  return array
+
+  for (let i = 0; i < chosenOnes.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      for (let k = 0; k < array[j].length; k++) {
+        array[chosenOnes[i][0]][k] = 0;
+        array[j][chosenOnes[i][1]] = 0;
+      }
+    }
+  }
+  return array;
 }
 
 console.log(setZero([
@@ -20,7 +27,7 @@ console.log(setZero([
   [1,0,1,1,1],
   [1,1,1,1,1]]));
 
-
+//store col and rows into an array, then at the end loop through the array and change to 0
 /*
 2D array
 Write an algorithm which searches through a 2D array, and whenever it finds a zero should set the entire row and column to zero.
